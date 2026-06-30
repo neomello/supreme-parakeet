@@ -56,13 +56,26 @@ export const cliente: Cliente = {
 
 export const tese = {
   eyebrow: "leitura preliminar do ecossistema digital",
-  titulo: "Mari Amaral já é uma operação digital relevante.",
+  titulo: "O momento não é de “recomeçar”, mas de organizar a camada que sustenta aquisição, dados, mensuração e continuidade operacional.",
   // a palavra abaixo recebe destaque no Hero
-  destaque: "relevante",
+  destaque: "organizar",
   lede:
-    "A marca possui e-commerce ativo, audiência consolidada, operação comercial estruturada e faturamento mensal acima de R$ 1M.\n\n" +
-    "O momento não é de “recomeçar”, mas de organizar a camada que sustenta aquisição, dados, mensuração e continuidade operacional.",
+    "Mari Amaral já é uma operação digital relevante. A marca possui e-commerce ativo, audiência consolidada, operação comercial estruturada e faturamento mensal acima de R$ 1M.",
 };
+
+export const leituraInicial = {
+  titulo: "Leitura inicial",
+  pontos: [
+    { label: "Domínio", valor: "usemariamaral.com.br" },
+    { label: "Plataforma atual", valor: "Olist / VNDA" },
+    { label: "Borda técnica", valor: "Cloudflare no www + Fly.io no domínio raiz" },
+    { label: "Cenário", valor: "Possível migração de plataforma em avaliação" },
+    { label: "Risco central", valor: "Perder histórico, sinal e desempenho durante a troca" },
+  ]
+};
+
+export const visaoGeralNota =
+  "A estrutura do projeto já parte dessa premissa: fechar uma operação de 24 meses com a Mari Amaral, evitando o erro de apresentar soluções demais e separando a proposta em duas camadas — a que fecha agora e a que sustenta a visão de longo prazo.";
 
 export const teseOperacao = {
   eyebrow:

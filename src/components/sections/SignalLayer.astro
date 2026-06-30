@@ -1,5 +1,6 @@
 ---
-import { diagrama as d, teseOperacao } from "@data/proposta";
+import { diagrama as d, teseOperacao, visaoGeralNota } from "@data/proposta";
+import AuditorNote from "@components/ui/AuditorNote.astro";
 ---
 
 <section class="sig fade-in">
@@ -62,6 +63,12 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
       <span class="rcaret glow-line">▶</span>
       {d.resultado.map((r) => <div>{r}</div>)}
     </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <AuditorNote id="modal-visao-geral" label="Premissa do projeto" title="Visão de Longo Prazo">
+      <p style="font-size: 16px; line-height: 1.6; color: var(--text-main);">{visaoGeralNota}</p>
+    </AuditorNote>
   </div>
 </section>
 
@@ -143,10 +150,10 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
   .src {
     font-size: var(--fs-small);
     color: var(--text-muted);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--rule);
     border-radius: 8px;
     padding: 10px 14px;
-    background: rgba(0,0,0,0.2);
+    background: var(--glass-bg);
     white-space: nowrap;
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
@@ -221,7 +228,7 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
     position: relative;
     align-self: stretch;
     width: 1px;
-    border-left: 1px dashed rgba(255, 255, 255, 0.2);
+    border-left: 1px dashed var(--rule);
     margin: 0 12px;
   }
   .blabel {
@@ -234,8 +241,8 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
     font-size: 9px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
-    background: var(--paper);
+    color: var(--text-faint);
+    background: var(--bg-stage);
     padding: 4px 8px;
     border-radius: 4px;
   }
@@ -263,9 +270,9 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
     /* Uses .glass class directly */
   }
   .future {
-    border: 1px dashed rgba(255,255,255,0.15);
+    border: 1px dashed var(--rule);
     color: var(--text-muted);
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.02);
   }
   .future strong {
     color: var(--text-muted);

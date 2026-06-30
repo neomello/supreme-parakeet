@@ -17,16 +17,20 @@ import { cliente } from "@data/proposta";
           <span class="num mono">00</span>
           Visão Geral
         </button>
-        <button class="menu-item" data-target="diagnostico">
+        <button class="menu-item" data-target="camada-sobrevive">
           <span class="num mono">01</span>
+          A Camada que Sobrevive
+        </button>
+        <button class="menu-item" data-target="diagnostico">
+          <span class="num mono">02</span>
           Diagnóstico Técnico
         </button>
         <button class="menu-item" data-target="operacao" data-theme="light">
-          <span class="num mono">02</span>
+          <span class="num mono">03</span>
           Plano de Operação
         </button>
         <button class="menu-item" data-target="roadmap">
-          <span class="num mono">03</span>
+          <span class="num mono">04</span>
           Roadmap
         </button>
       </nav>
@@ -35,6 +39,8 @@ import { cliente } from "@data/proposta";
     <div class="stage theme-light">
       <div id="visao-geral" class="tab-content active">
         <Hero />
+      </div>
+      <div id="camada-sobrevive" class="tab-content">
         <SignalLayer />
       </div>
       <div id="diagnostico" class="tab-content">

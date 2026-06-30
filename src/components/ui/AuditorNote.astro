@@ -1,4 +1,6 @@
 ---
+import fotoAuditor from "../../assets/file.jpg";
+
 interface Props {
   id: string;
   label: string;
@@ -9,9 +11,9 @@ const { id, label, title } = Astro.props;
 
 <div class="auditor-action fade-in">
   <button class="auditor-trigger" onclick={`document.getElementById('${id}').classList.add('active')`}>
-    <div class="auditor-photo"></div>
+    <div class="auditor-photo" style={`background-image: url(${fotoAuditor.src})`}></div>
     <div class="auditor-info">
-      <span class="mono">NEØ // OPERAÇÃO</span>
+      <span class="mono">NEØ DEV //</span>
       <strong>{label}</strong>
     </div>
   </button>
@@ -20,7 +22,7 @@ const { id, label, title } = Astro.props;
 <div id={id} class="modal-overlay" onclick={`if(event.target.id === '${id}') this.classList.remove('active')`}>
   <div class="modal-content glass">
     <div class="modal-header">
-      <div class="auditor-photo"></div>
+      <div class="auditor-photo" style={`background-image: url(${fotoAuditor.src})`}></div>
       <div class="modal-title">
         <span class="mono">NEØ // NOTA OPERACIONAL</span>
         <h3>{title}</h3>
@@ -59,7 +61,6 @@ const { id, label, title } = Astro.props;
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background-image: url('https://github.com/nettomello.png');
     background-size: cover;
     background-position: center;
     border: 2px solid var(--signal);
