@@ -33,8 +33,8 @@ import { operacao } from "@data/proposta";
   .list {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     box-shadow: var(--glass-shadow);
     border-radius: 16px;
     padding: 10px 24px;
@@ -44,7 +44,7 @@ import { operacao } from "@data/proposta";
     grid-template-columns: 52px 1fr;
     gap: 20px;
     padding: 24px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--rule);
   }
   .op:first-child {
     padding-top: 14px;
@@ -56,7 +56,7 @@ import { operacao } from "@data/proposta";
   .n {
     font-size: 24px;
     font-weight: 600;
-    color: var(--rule);
+    color: var(--text-faint);
   }
   .body strong {
     display: block;
@@ -66,14 +66,14 @@ import { operacao } from "@data/proposta";
   }
   .body > span {
     display: block;
-    color: var(--ink-2);
+    color: var(--text-muted);
     font-size: var(--fs-small);
     line-height: 1.55;
     max-width: 560px;
   }
   .dep {
     font-size: var(--fs-micro);
-    color: var(--ink-faint);
+    color: var(--text-faint);
     margin-top: 6px;
   }
 </style>

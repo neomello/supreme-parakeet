@@ -1,14 +1,17 @@
 ---
 import SectionHead from "@components/ui/SectionHead.astro";
 import StatusDot from "@components/ui/StatusDot.astro";
-import { diagnostico, diagnosticoNota } from "@data/proposta";
+import Modal from "@components/ui/Modal.astro";
+import { diagnostico, diagnosticoNota, planoAuditoria } from "@data/proposta";
+import fotoAuditor from "../../assets/file.jpg";
 ---
 
-<section class="diag">
+<section class="diag fade-in">
+  <p class="eyebrow">▸ DIAGNÓSTICO EXTERNO — varredura pública / sem acesso interno</p>
   <SectionHead
     num="01"
-    titulo="O que a infraestrutura publica revela hoje"
-    deck="Leitura tecnica externa, sem acesso a painel ou credenciais."
+    titulo="A estrutura pública é saudável. A operação parece empilhada."
+    deck="A leitura externa indica uma operação em plataforma gerenciada, com boa camada de borda e sinais de maturidade técnica."
   />
 
   <div class="list glass fade-in">
@@ -20,20 +23,51 @@ import { diagnostico, diagnosticoNota } from "@data/proposta";
         <span class={`stat mono ${d.status}`}>{d.statusLabel}</span>
       </div>
     ))}
+    <div class="note mono">
+      <span class="info-icon">i</span>
+      {diagnosticoNota}
+    </div>
   </div>
 
-  <p class="note mono">// {diagnosticoNota}</p>
+  <div class="auditor-action fade-in">
+    <button class="auditor-trigger" onclick="document.getElementById('modal-auditoria').showModal()">
+      <img src={fotoAuditor.src} alt="NEØ MELLØ" class="auditor-photo" />
+      <div class="auditor-info">
+        <span class="mono">Ação Necessária</span>
+        <strong>Plano de Auditoria</strong>
+      </div>
+    </button>
+  </div>
+
+  <Modal id="modal-auditoria">
+    <div class="audit-content">
+      <h3 class="mono">{planoAuditoria.titulo}</h3>
+      <ul class="audit-list">
+        {planoAuditoria.itens.map(i => (
+          <li><span class="bullet glow-line">▶</span> <span>{i}</span></li>
+        ))}
+      </ul>
+    </div>
+  </Modal>
 </section>
 
 <style>
   .diag {
     margin-bottom: var(--section);
   }
+  .eyebrow {
+    margin-bottom: 16px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
   .list {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     box-shadow: var(--glass-shadow);
     border-radius: 16px;
     padding: 10px 24px;
@@ -53,8 +87,16 @@ import { diagnostico, diagnosticoNota } from "@data/proposta";
     font-weight: 600;
     font-size: var(--fs-small);
   }
+  .bullet {
+    color: var(--accent);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .glow-line {
+    text-shadow: 0 0 10px var(--accent);
+  }
   .desc {
-    color: var(--ink-2);
+    color: var(--text-muted);
     font-size: var(--fs-small);
     line-height: 1.5;
   }
@@ -87,5 +129,78 @@ import { diagnostico, diagnosticoNota } from "@data/proposta";
     .stat {
       text-align: left;
     }
+  }
+
+  /* Acao do Auditor */
+  .auditor-action {
+    margin-top: 32px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .auditor-trigger {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 24px 8px 8px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .auditor-trigger:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--signal);
+    box-shadow: 0 0 20px rgba(200, 12, 153, 0.2);
+    transform: translateY(-2px);
+  }
+  .auditor-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--signal);
+  }
+  .auditor-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .auditor-info span {
+    font-size: 10px;
+    color: var(--signal);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .auditor-info strong {
+    font-size: var(--fs-small);
+    color: var(--ink);
+    font-family: var(--sans);
+    margin-top: 2px;
+  }
+  
+  /* Conteudo do Modal */
+  .audit-content h3 {
+    color: var(--signal);
+    font-size: 14px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .audit-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .audit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: var(--fs-body);
+    line-height: 1.5;
+    color: var(--ink-2);
   }
 </style>

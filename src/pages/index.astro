@@ -21,7 +21,7 @@ import { cliente } from "@data/proposta";
           <span class="num mono">01</span>
           Diagnóstico Técnico
         </button>
-        <button class="menu-item" data-target="operacao">
+        <button class="menu-item" data-target="operacao" data-theme="light">
           <span class="num mono">02</span>
           Plano de Operação
         </button>
@@ -63,6 +63,17 @@ import { cliente } from "@data/proposta";
 
           button.classList.add('active');
           const targetId = button.getAttribute('data-target');
+          const theme = button.getAttribute('data-theme');
+          const stage = document.querySelector('.stage');
+          
+          if (stage) {
+            if (theme === 'light') {
+              stage.classList.add('theme-light');
+            } else {
+              stage.classList.remove('theme-light');
+            }
+          }
+
           if (targetId) {
             const targetTab = document.getElementById(targetId);
             if (targetTab) {
@@ -73,11 +84,37 @@ import { cliente } from "@data/proposta";
       });
     }
 
+    function printEasterEgg() {
+      // Evita imprimir multiplas vezes durante navegacao
+      if ((window as any).__easterEggPrinted) return;
+      (window as any).__easterEggPrinted = true;
+
+      const titleStyle = "color: #c80c99; font-weight: bold; font-size: 16px; font-family: monospace;";
+      const subStyle = "color: #6ba1ff; font-weight: bold; font-size: 14px; font-family: monospace;";
+      const bodyStyle = "color: #E1E8E1; font-size: 12px; font-family: monospace; line-height: 1.5;";
+
+      console.log("%c// NEØ MELLØ", titleStyle);
+      console.log("%c> SINAL ESTABELECIDO: DIAGNÓSTICO DE CONTINUIDADE", subStyle);
+      console.log(
+        "%c\n" +
+        "STATUS DA OPERAÇÃO : ATIVA\n" +
+        "ALVO               : usemariamaral.com.br\n" +
+        "OBJETIVO           : Blindagem da infraestrutura de aquisição\n\n" +
+        "A inteligência não reseta. O histórico não se perde.\n" +
+        "Apresentação pronta para iniciar.",
+        bodyStyle
+      );
+    }
+
     // Como usamos ViewTransitions, inicializamos no carregamento
     // e escutamos o evento astro:page-load para reinicializar
-    document.addEventListener('astro:page-load', initTabs);
+    document.addEventListener('astro:page-load', () => {
+      initTabs();
+      printEasterEgg();
+    });
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       initTabs();
+      printEasterEgg();
     }
   </script>
 </Base>

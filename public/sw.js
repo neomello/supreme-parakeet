@@ -6,7 +6,7 @@
 // dependencia externa.
 // =====================================================
 
-const VERSION = "mari-amaral-proposta-v1";
+const VERSION = "mari-amaral-proposta-v2";
 const PRECACHE = [
   "/",
   "/index.html",

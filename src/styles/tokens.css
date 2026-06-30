@@ -26,10 +26,27 @@
   --blue: rgb(4, 14, 36);
   --color-white: #fff;
   --rebrand-primary-color: #0a4ee4;
+  --rebrand-primary-light: #6ba1ff;
   --rebrand-secondary-color: #091350;
+
+  /* stage variables */
+  --bg-stage: transparent;
+  --text-main: var(--ink);
+  --text-muted: var(--ink-2);
+  --text-faint: var(--ink-faint);
+  --rule: rgba(255, 255, 255, 0.1);
+  --accent: var(--rebrand-primary-light);
+  
+  /* theme-light variables */
+  --bg-stage-light: #F2F1EC;
+  --text-main-light: #0A0F1C;
+  --text-muted-light: #5C657A;
+  --text-faint-light: #8A94A6;
+  --rule-light: rgba(0, 0, 0, 0.08);
+  --accent-light: var(--rebrand-primary-color);
   
   /* glassmorphism & fx */
-  --glass-bg: rgba(4, 14, 36, 0.35); /* darker, frosted tint */
+  --glass-bg: rgba(255, 255, 255, 0.04); /* lighter tint for contrast against dark mesh */
   --glass-border: rgba(255, 255, 255, 0.12);
   --glass-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5);
   --glass-blur: blur(24px);

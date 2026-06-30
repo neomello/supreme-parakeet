@@ -41,8 +41,8 @@ export interface RoadmapItem {
 
 export const autor = {
   nome: "NEØ MELLØ",
-  papel: "Arquitetura de Aquisicao e Dados",
-  horizonte: "operacao continua / 24 meses",
+  papel: "Arquitetura de Aquisição e Dados",
+  horizonte: "operação contínua / 24 meses",
 };
 
 export const cliente: Cliente = {
@@ -54,15 +54,25 @@ export const cliente: Cliente = {
 };
 
 export const tese = {
-  eyebrow: "diagnostico tecnico / proposta de operacao",
-  titulo: "A loja muda de plataforma. O sinal de quem compra, nao.",
+  eyebrow: "leitura preliminar do ecossistema digital",
+  titulo: "Mari Amaral já é uma operação digital relevante.",
   // a palavra abaixo recebe destaque no Hero
-  destaque: "sinal",
+  destaque: "relevante",
   lede:
-    "Leitura da infraestrutura publica de " +
-    "usemariamaral.com.br e plano de operacao de aquisicao " +
-    "e dados desenhado para atravessar uma eventual troca " +
-    "de plataforma sem perda de historico ou desempenho.",
+    "A marca possui e-commerce ativo, audiência consolidada, operação comercial estruturada e faturamento mensal acima de R$ 1M.\n\n" +
+    "O momento não parece ser de “começar do zero”, mas de organizar a camada que sustenta aquisição, dados, mensuração e continuidade operacional.",
+};
+
+export const teseOperacao = {
+  eyebrow: "tese da operação",
+  titulo: "A loja pode mudar. A inteligência de aquisição não pode resetar.",
+  lede:
+    "Quando uma empresa migra de plataforma, muita coisa muda:\n" +
+    "front; checkout; integrações; tags; eventos; pixels; histórico; forma de medir resultado.\n\n" +
+    "O problema não é mudar de plataforma.\n" +
+    "O problema é mudar sem proteger a camada que alimenta mídia, mensuração e decisão.",
+  tesePrincipal:
+    "Construir uma fundação de dados e aquisição desacoplada da plataforma atual, capaz de sustentar Google, Meta, eventos, CAPI, deduplicação e mensuração antes, durante e depois de uma eventual migração.",
 };
 
 // Diagrama central: a camada de sinal e propriedade do
@@ -90,43 +100,39 @@ export const diagrama = {
 
 export const diagnostico: DiagItem[] = [
   {
-    titulo: "Borda e cache",
-    descricao:
-      "Dominio canonico atras de Cloudflare, com cabecalhos " +
-      "de seguranca bem configurados.",
+    titulo: "Borda / CDN",
+    descricao: "Cloudflare no domínio com www. Boa camada de performance e proteção.",
     status: "ok",
-    statusLabel: "saudavel",
+    statusLabel: "saudável",
   },
   {
-    titulo: "Roteamento do dominio",
-    descricao:
-      "Camada propria conduz o redirecionamento ate o " +
-      "endereco final com www.",
+    titulo: "Roteamento",
+    descricao: "Fly.io no domínio raiz/apex. Camada intermediária de redirecionamento.",
     status: "ok",
-    statusLabel: "saudavel",
+    statusLabel: "saudável",
   },
   {
-    titulo: "Tags e rastreamento",
-    descricao:
-      "Google Tag Manager ativo. De fora nao se ve se ha " +
-      "duplicidade de eventos ou perda de sinal.",
-    status: "watch",
-    statusLabel: "auditar",
+    titulo: "Segurança",
+    descricao: "HSTS, X-Frame-Options, nosniff, CSP básica. Boa higiene de frontend.",
+    status: "ok",
+    statusLabel: "saudável",
   },
   {
-    titulo: "Governanca de acesso",
-    descricao:
-      "Assinatura de fornecedor visivel no site, sem indicar " +
-      "quem detem controle tecnico hoje.",
-    status: "watch",
-    statusLabel: "auditar",
+    titulo: "Tags",
+    descricao: "Google Tag Manager ativo. Existe camada de rastreamento e pixels.",
+    status: "ok",
+    statusLabel: "saudável",
+  },
+  {
+    titulo: "Plataforma",
+    descricao: "Sinais compatíveis com e-commerce gerenciado. Operação não parece artesanal ou frágil.",
+    status: "ok",
+    statusLabel: "saudável",
   },
 ];
 
 export const diagnosticoNota =
-  "leitura baseada em varredura publica de cabecalhos HTTP. " +
-  "nao substitui auditoria interna de plataforma, checkout " +
-  "e acessos.";
+  "Sinais detectados: Cloudflare, cookie __cf_bm, Google Tag Manager, HTML5, assinatura PoweredBy[Californio], HSTS, X-Frame-Options e X-XSS-Protection no domínio canônico com www.";
 
 export const operacao: OpItem[] = [
   {
@@ -205,4 +211,15 @@ export const roadmap: RoadmapItem[] = [
 export const cta = {
   titulo: "Proximo passo",
   descricao: "Alinhamento de escopo e inicio da fundacao de dados, etapa 01.",
+};
+
+export const planoAuditoria = {
+  titulo: "O que precisa ser auditado:",
+  itens: [
+    "Quem controla GTM, Meta Business Manager, Google Ads, GA4 e acessos críticos.",
+    "Se eventos estão duplicados, ausentes ou divergentes.",
+    "Quais scripts e widgets estão ativos por necessidade real.",
+    "Qual ferramenta é a fonte confiável de conversão, receita e recompra.",
+    "O que pertence à plataforma atual e o que pode sobreviver a uma migração."
+  ]
 };

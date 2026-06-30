@@ -45,7 +45,7 @@ const [antes, depois] = tese.titulo.split(tese.destaque);
   }
   .eyebrow {
     margin-bottom: 20px;
-    color: var(--rebrand-primary-color);
+    color: var(--accent);
     font-weight: 600;
   }
   h1 {
@@ -66,14 +66,15 @@ const [antes, depois] = tese.titulo.split(tese.destaque);
     color: var(--ink-2);
     font-size: var(--fs-body);
     max-width: 480px;
+    white-space: pre-line;
   }
   
   /* Glass Card */
   .glass {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
     box-shadow: var(--glass-shadow);
     border-radius: 16px;
     padding: 24px;
