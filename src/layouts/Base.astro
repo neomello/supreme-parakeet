@@ -1,6 +1,8 @@
 ---
 // Layout base. Carrega tokens, fontes e estilos globais.
 // Recebe titulo da pagina via props.
+import { ClientRouter } from 'astro:transitions';
+
 interface Props {
   titulo: string;
 }
@@ -14,8 +16,10 @@ import "@styles/global.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#03092f" />
     <meta name="robots" content="noindex, nofollow" />
     <title>{titulo}</title>
+    <ClientRouter />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,6 +35,11 @@ import "@styles/global.css";
     </script>
   </head>
   <body>
+    <!-- Mesh Gradient Background animado -->
+    <div class="mesh-bg" aria-hidden="true">
+      <div class="blob primary"></div>
+      <div class="blob secondary"></div>
+    </div>
     <main class="shell">
       <slot />
     </main>

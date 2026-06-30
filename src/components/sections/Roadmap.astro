@@ -10,7 +10,7 @@ import { roadmap } from "@data/proposta";
     deck="Camadas seguintes, ativadas conforme a fundacao amadurece."
   />
 
-  <div class="track">
+  <div class="track glass fade-in">
     {roadmap.map((r) => (
       <div class={`node ${r.fase}`}>
         <div class="tick mono">{r.fase === "ativo" ? "◆" : "◇"}</div>
@@ -30,11 +30,17 @@ import { roadmap } from "@data/proposta";
   .track {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--rule);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+    border-radius: 16px;
+    overflow: hidden;
   }
   .node {
-    padding: 18px 18px 0 0;
-    border-right: 1px solid var(--rule-soft);
+    padding: 24px 24px 24px 24px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
   }
   .node:last-child {
     border-right: none;

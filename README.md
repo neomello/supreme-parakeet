@@ -4,7 +4,7 @@ One-pager de diagnostico tecnico e proposta de operacao
 de aquisicao e dados. Saida estatica em Astro, portavel,
 sem dependencia de servidor.
 
-```
+```text
 proposta ▸ continuidade de dados ▸ 24 meses
 ```
 
@@ -12,7 +12,7 @@ proposta ▸ continuidade de dados ▸ 24 meses
 
 ## Inicio rapido
 
-```
+```text
 pnpm install
 pnpm dev
 ```
@@ -23,7 +23,7 @@ Abre em `http://localhost:4321`.
 
 ## Mapa do projeto
 
-```
+```text
 mari-amaral-proposta/
   AGENTS.md      regras para agentes de IA
   CONTEXT.md     mapa mental do workspace
@@ -91,7 +91,7 @@ historico.
 
 Para gerar um PDF de envio offline:
 
-```
+```text
 pnpm build
 pnpm preview
 ```

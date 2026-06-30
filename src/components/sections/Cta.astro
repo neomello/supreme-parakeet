@@ -2,8 +2,8 @@
 import { cta, autor } from "@data/proposta";
 ---
 
-<footer class="cta">
-  <hr class="rule" />
+<footer class="cta glass fade-in">
+  <!-- <hr class="rule" /> removido porque o cartao em si ja separa -->
   <div class="row">
     <div class="left">
       <strong>{cta.titulo}</strong>
@@ -18,7 +18,14 @@ import { cta, autor } from "@data/proposta";
 
 <style>
   .cta {
-    margin-top: 8px;
+    margin-top: 40px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+    border-radius: 16px;
+    padding: 32px;
   }
   .row {
     display: flex;

@@ -10,10 +10,74 @@ import { cliente } from "@data/proposta";
 ---
 
 <Base titulo={`${cliente.nome} — Continuidade de Dados`}>
-  <Hero />
-  <SignalLayer />
-  <Diagnostico />
-  <Operacao />
-  <Roadmap />
-  <Cta />
+  <div class="dashboard">
+    <aside class="sidebar glass">
+      <nav class="menu" id="presentation-menu">
+        <button class="menu-item active" data-target="visao-geral">
+          <span class="num mono">00</span>
+          Visão Geral
+        </button>
+        <button class="menu-item" data-target="diagnostico">
+          <span class="num mono">01</span>
+          Diagnóstico Técnico
+        </button>
+        <button class="menu-item" data-target="operacao">
+          <span class="num mono">02</span>
+          Plano de Operação
+        </button>
+        <button class="menu-item" data-target="roadmap">
+          <span class="num mono">03</span>
+          Roadmap
+        </button>
+      </nav>
+    </aside>
+
+    <div class="stage">
+      <div id="visao-geral" class="tab-content active">
+        <Hero />
+        <SignalLayer />
+      </div>
+      <div id="diagnostico" class="tab-content">
+        <Diagnostico />
+      </div>
+      <div id="operacao" class="tab-content">
+        <Operacao />
+      </div>
+      <div id="roadmap" class="tab-content">
+        <Roadmap />
+        <Cta />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Configura a transição das abas
+    function initTabs() {
+      const buttons = document.querySelectorAll('.menu-item');
+      const tabs = document.querySelectorAll('.tab-content');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          tabs.forEach(t => t.classList.remove('active'));
+
+          button.classList.add('active');
+          const targetId = button.getAttribute('data-target');
+          if (targetId) {
+            const targetTab = document.getElementById(targetId);
+            if (targetTab) {
+              targetTab.classList.add('active');
+            }
+          }
+        });
+      });
+    }
+
+    // Como usamos ViewTransitions, inicializamos no carregamento
+    // e escutamos o evento astro:page-load para reinicializar
+    document.addEventListener('astro:page-load', initTabs);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initTabs();
+    }
+  </script>
 </Base>

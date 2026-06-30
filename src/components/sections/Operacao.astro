@@ -10,7 +10,7 @@ import { operacao } from "@data/proposta";
     deck="A sequencia importa: cada etapa depende da anterior em producao."
   />
 
-  <div class="list">
+  <div class="list glass fade-in">
     {operacao.map((o) => (
       <div class="op">
         <div class="n mono">{o.ordem}</div>
@@ -30,18 +30,28 @@ import { operacao } from "@data/proposta";
   .ops {
     margin-bottom: var(--section);
   }
+  .list {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+    border-radius: 16px;
+    padding: 10px 24px;
+  }
   .op {
     display: grid;
     grid-template-columns: 52px 1fr;
     gap: 20px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--rule-soft);
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   .op:first-child {
-    padding-top: 0;
+    padding-top: 14px;
   }
   .op:last-child {
     border-bottom: none;
+    padding-bottom: 14px;
   }
   .n {
     font-size: 24px;

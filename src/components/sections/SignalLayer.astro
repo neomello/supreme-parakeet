@@ -2,10 +2,10 @@
 import { diagrama as d } from "@data/proposta";
 ---
 
-<section class="sig">
+<section class="sig fade-in">
   <p class="eyebrow">// {d.label}</p>
 
-  <div class="grid">
+  <div class="grid glass">
     <!-- COLUNA 1: fontes de trafego -->
     <div class="col sources">
       {d.fontes.map((f) => (
@@ -17,11 +17,11 @@ import { diagrama as d } from "@data/proposta";
 
     <!-- conector -->
     <div class="conn" aria-hidden="true">
-      <span class="mono">═══▶</span>
+      <span class="mono glow-line">═══▶</span>
     </div>
 
     <!-- COLUNA 2: a camada de sinal (propriedade) -->
-    <div class="col signal-box">
+    <div class="col signal-box pulse-glow">
       <div class="badge mono">{d.camada.posse}</div>
       <h3>{d.camada.titulo}</h3>
       {d.camada.linhas.map((l) => (
@@ -39,7 +39,7 @@ import { diagrama as d } from "@data/proposta";
 
     <!-- COLUNA 3: plataformas (atual solida, futura tracejada) -->
     <div class="col platforms">
-      <div class="plat current">
+      <div class="plat current glass">
         <strong>{d.plataformaAtual.nome}</strong>
         <span class="mono">{d.plataformaAtual.nota}</span>
       </div>
@@ -51,7 +51,7 @@ import { diagrama as d } from "@data/proposta";
 
     <!-- COLUNA 4: resultado -->
     <div class="col result mono">
-      <span class="rcaret">▶</span>
+      <span class="rcaret glow-line">▶</span>
       {d.resultado.map((r) => <div>{r}</div>)}
     </div>
   </div>
@@ -63,56 +63,90 @@ import { diagrama as d } from "@data/proposta";
   }
   .eyebrow {
     margin-bottom: 20px;
+    color: var(--rebrand-primary-color);
+    font-weight: 600;
   }
   .grid {
     display: grid;
     grid-template-columns: auto auto 1fr auto auto auto;
     align-items: center;
     gap: 0 14px;
-    border: 1px solid var(--rule);
-    background: var(--paper-2);
-    padding: 26px 22px;
+    padding: 32px 24px;
+  }
+  
+  /* Glass Card base for grid */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: var(--glass-shadow);
+    border-radius: 16px;
   }
 
   .col {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
   }
 
   /* fontes */
   .src {
     font-size: var(--fs-small);
     color: var(--ink-2);
-    border: 1px solid var(--rule);
-    padding: 8px 12px;
-    background: var(--paper);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.2);
     white-space: nowrap;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .src:hover {
+    transform: translateX(4px);
+    border-color: var(--rebrand-primary-color);
   }
   .caret {
     color: var(--signal);
     margin-right: 8px;
+    text-shadow: var(--glow-signal);
   }
 
   .conn {
-    color: var(--ink-faint);
+    color: var(--rebrand-primary-color);
     font-size: 13px;
+  }
+  .glow-line {
+    text-shadow: 0 0 10px var(--rebrand-primary-color);
   }
 
   /* camada de sinal: o elemento dominante */
   .signal-box {
     border: 1.5px solid var(--signal);
-    background: var(--signal-soft);
-    padding: 16px 18px;
+    background: rgba(200, 12, 153, 0.05);
+    border-radius: 12px;
+    padding: 20px 22px;
     gap: 4px;
     min-width: 240px;
+    position: relative;
+    overflow: hidden;
   }
+  
+  @keyframes pulseBorder {
+    0% { box-shadow: 0 0 0 0 rgba(200, 12, 153, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(200, 12, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(200, 12, 153, 0); }
+  }
+  .pulse-glow {
+    animation: pulseBorder 3s infinite;
+  }
+
   .badge {
     font-size: var(--fs-micro);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--signal);
     margin-bottom: 6px;
+    text-shadow: var(--glow-signal);
   }
   .signal-box h3 {
     font-size: 15px;
@@ -138,8 +172,8 @@ import { diagrama as d } from "@data/proposta";
     position: relative;
     align-self: stretch;
     width: 1px;
-    border-left: 1px dashed var(--warn);
-    margin: 0 8px;
+    border-left: 1px dashed rgba(255, 255, 255, 0.2);
+    margin: 0 12px;
   }
   .blabel {
     position: absolute;
@@ -151,18 +185,20 @@ import { diagrama as d } from "@data/proposta";
     font-size: 9px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--warn);
-    background: var(--paper-2);
-    padding: 0 6px;
+    color: rgba(255, 255, 255, 0.4);
+    background: var(--paper);
+    padding: 4px 8px;
+    border-radius: 4px;
   }
 
   /* plataformas */
   .plat {
-    padding: 10px 14px;
+    padding: 14px 18px;
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    min-width: 150px;
+    gap: 4px;
+    min-width: 160px;
+    border-radius: 12px;
   }
   .plat strong {
     font-size: var(--fs-small);
@@ -170,17 +206,17 @@ import { diagrama as d } from "@data/proposta";
   }
   .plat span {
     font-size: 9.5px;
-    color: var(--ink-faint);
+    color: var(--ink-2);
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
   .current {
-    border: 1px solid var(--rule);
-    background: var(--paper);
+    /* Uses .glass class directly */
   }
   .future {
-    border: 1px dashed var(--rule);
+    border: 1px dashed rgba(255,255,255,0.15);
     color: var(--ink-2);
+    background: rgba(0,0,0,0.1);
   }
   .future strong {
     color: var(--ink-2);
@@ -200,7 +236,7 @@ import { diagrama as d } from "@data/proposta";
     margin-bottom: 4px;
   }
   .result div:last-child {
-    color: var(--ink-faint);
+    color: var(--ink-2);
   }
 
   /* mobile: empilha verticalmente, vira fluxo de cima p/ baixo */
