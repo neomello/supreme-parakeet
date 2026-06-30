@@ -47,16 +47,14 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
       <span class="blabel mono">{d.fronteira}</span>
     </div>
 
-    <!-- COLUNA 3: plataformas (atual solida, futura tracejada) -->
+    <!-- COLUNA 3: plataformas -->
     <div class="col platforms">
-      <div class="plat current glass">
-        <strong>{d.plataformaAtual.nome}</strong>
-        <span class="mono">{d.plataformaAtual.nota}</span>
-      </div>
-      <div class="plat future">
-        <strong>{d.plataformaFutura.nome}</strong>
-        <span class="mono">{d.plataformaFutura.nota}</span>
-      </div>
+      {d.destinos.map((dest) => (
+        <div class="plat fade-in">
+          <strong>{dest.nome}</strong>
+          <span class="mono">{dest.nota}</span>
+        </div>
+      ))}
     </div>
 
     <!-- COLUNA 4: resultado -->
@@ -84,7 +82,7 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
     letter-spacing: -0.01em;
   }
   .intro .lede {
-    color: var(--ink-2);
+    color: var(--text-muted);
     font-size: var(--fs-body);
     white-space: pre-line;
     line-height: 1.6;
@@ -215,7 +213,7 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
   }
   .srow span {
     font-size: var(--fs-micro);
-    color: var(--ink-2);
+    color: var(--text-muted);
   }
 
   /* fronteira tracejada vertical */
@@ -257,7 +255,7 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
   }
   .plat span {
     font-size: 9.5px;
-    color: var(--ink-2);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
@@ -266,11 +264,11 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
   }
   .future {
     border: 1px dashed rgba(255,255,255,0.15);
-    color: var(--ink-2);
+    color: var(--text-muted);
     background: rgba(0,0,0,0.1);
   }
   .future strong {
-    color: var(--ink-2);
+    color: var(--text-muted);
   }
 
   /* resultado */
@@ -278,7 +276,7 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
     font-family: var(--mono);
     font-size: var(--fs-small);
     font-weight: 600;
-    color: var(--ink);
+    color: var(--text-main);
     line-height: 1.5;
   }
   .rcaret {
@@ -287,7 +285,7 @@ import { diagrama as d, teseOperacao } from "@data/proposta";
     margin-bottom: 4px;
   }
   .result div:last-child {
-    color: var(--ink-2);
+    color: var(--text-muted);
   }
 
   /* mobile: empilha verticalmente, vira fluxo de cima p/ baixo */

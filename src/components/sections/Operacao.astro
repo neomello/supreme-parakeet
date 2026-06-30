@@ -1,13 +1,14 @@
 ---
+import AuditorNote from "@components/ui/AuditorNote.astro";
 import SectionHead from "@components/ui/SectionHead.astro";
-import { operacao } from "@data/proposta";
+import { operacao, operacaoIntro } from "@data/proposta";
 ---
 
 <section class="ops">
   <SectionHead
     num="02"
-    titulo="Ordem de ativacao, primeiros 90 dias"
-    deck="A sequencia importa: cada etapa depende da anterior em producao."
+    titulo={operacaoIntro.titulo}
+    deck={operacaoIntro.deck}
   />
 
   <div class="list glass fade-in">
@@ -17,12 +18,23 @@ import { operacao } from "@data/proposta";
         <div class="body">
           <strong>{o.titulo}</strong>
           <span>{o.descricao}</span>
+          {o.lista && (
+            <ul class="sublist">
+              {o.lista.map((item) => (
+                <li><span class="bullet glow-line">▶</span> <span>{item}</span></li>
+              ))}
+            </ul>
+          )}
           {o.dependeDe && (
             <span class="dep mono">└ depende de {o.dependeDe}</span>
           )}
         </div>
       </div>
     ))}
+    
+    <AuditorNote id="modal-operacao" label="Arquitetura de Venda" title="Detalhe do Escopo">
+      <p class="nota-texto">{operacaoIntro.nota}</p>
+    </AuditorNote>
   </div>
 </section>
 
@@ -74,6 +86,30 @@ import { operacao } from "@data/proposta";
   .dep {
     font-size: var(--fs-micro);
     color: var(--text-faint);
-    margin-top: 6px;
+    margin-top: 10px;
+  }
+  .sublist {
+    list-style: none;
+    padding: 0;
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+  .sublist li {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .bullet {
+    font-size: 9px;
+    color: var(--accent);
+  }
+  .nota-texto {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-main);
   }
 </style>

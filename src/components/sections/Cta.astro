@@ -1,63 +1,74 @@
 ---
-import { cta, autor } from "@data/proposta";
+import { cta } from "@data/proposta";
 ---
 
-<footer class="cta glass fade-in">
-  <!-- <hr class="rule" /> removido porque o cartao em si ja separa -->
-  <div class="row">
-    <div class="left">
-      <strong>{cta.titulo}</strong>
-      <span>{cta.descricao}</span>
+<section class="cta fade-in">
+  <div class="cta-box glass">
+    <div class="content">
+      <h2>{cta.titulo}</h2>
+      <p>{cta.descricao}</p>
     </div>
-    <div class="right mono">
-      proposta preparada por {autor.nome}<br />
-      {autor.horizonte}
-    </div>
+    <button class="btn-primary mono" onclick="alert('Iniciando handshake operacional...'); document.getElementById('roadmap').classList.remove('active'); document.getElementById('visao-geral').classList.add('active'); document.querySelectorAll('.menu-item').forEach(b => b.classList.remove('active')); document.querySelector('.menu-item[data-target=\\'visao-geral\\']').classList.add('active');">
+      {">"} APROVAR PROPOSTA
+    </button>
   </div>
-</footer>
+</section>
 
 <style>
-  .cta {
-    margin-top: 40px;
+  .cta-box {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     -webkit-backdrop-filter: var(--glass-blur);
     backdrop-filter: var(--glass-blur);
     box-shadow: var(--glass-shadow);
     border-radius: 16px;
-    padding: 32px;
-  }
-  .row {
+    padding: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 24px;
-    padding-top: 26px;
+    gap: 32px;
   }
-  .left strong {
-    display: block;
-    font-size: var(--fs-body);
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .left span {
-    font-size: var(--fs-small);
-    color: var(--ink-2);
-  }
-  .right {
-    font-size: var(--fs-micro);
-    color: var(--ink-faint);
-    text-align: right;
-    line-height: 1.7;
-  }
+  
   @media (max-width: 720px) {
-    .row {
+    .cta-box {
       flex-direction: column;
       align-items: flex-start;
-      gap: 14px;
+      padding: 32px 24px;
     }
-    .right {
-      text-align: left;
-    }
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 8px;
+  }
+  
+  p {
+    font-size: var(--fs-body);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  
+  .btn-primary {
+    background: var(--text-main);
+    color: var(--bg-stage);
+    border: none;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: var(--fs-small);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    background: var(--signal);
+    color: #fff;
   }
 </style>

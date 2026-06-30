@@ -32,7 +32,7 @@ import { cliente } from "@data/proposta";
       </nav>
     </aside>
 
-    <div class="stage">
+    <div class="stage theme-light">
       <div id="visao-geral" class="tab-content active">
         <Hero />
         <SignalLayer />
@@ -63,16 +63,6 @@ import { cliente } from "@data/proposta";
 
           button.classList.add('active');
           const targetId = button.getAttribute('data-target');
-          const theme = button.getAttribute('data-theme');
-          const stage = document.querySelector('.stage');
-          
-          if (stage) {
-            if (theme === 'light') {
-              stage.classList.add('theme-light');
-            } else {
-              stage.classList.remove('theme-light');
-            }
-          }
 
           if (targetId) {
             const targetTab = document.getElementById(targetId);

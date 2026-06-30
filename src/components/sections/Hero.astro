@@ -40,6 +40,9 @@ const [antes, depois] = tese.titulo.split(tese.destaque);
   .brand-logo {
     margin-bottom: 24px;
   }
+  .brand-logo img {
+    filter: brightness(0);
+  }
   .lead {
     max-width: 620px;
   }
@@ -63,7 +66,7 @@ const [antes, depois] = tese.titulo.split(tese.destaque);
   }
   .lede {
     margin-top: 16px;
-    color: var(--ink-2);
+    color: var(--text-muted);
     font-size: var(--fs-body);
     max-width: 480px;
     white-space: pre-line;
@@ -83,7 +86,7 @@ const [antes, depois] = tese.titulo.split(tese.destaque);
   .card {
     flex-shrink: 0;
     font-size: var(--fs-micro);
-    color: var(--ink-faint);
+    color: var(--text-faint);
     min-width: 240px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -92,7 +95,7 @@ const [antes, depois] = tese.titulo.split(tese.destaque);
     box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.6);
   }
   .card b {
-    color: var(--ink);
+    color: var(--text-main);
     font-weight: 600;
   }
   .line {

@@ -39,8 +39,8 @@ body {
    ===================================================== */
 .dashboard {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 40px;
+  grid-template-columns: 190px 1fr;
+  gap: 32px;
   min-height: calc(100vh - 140px); /* accounting for shell padding */
 }
 
@@ -99,6 +99,12 @@ body {
 .stage {
   position: relative;
   min-width: 0; /* Impede overflow no CSS grid */
+  background: var(--bg-stage);
+  color: var(--text-main);
+  transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s ease;
+  padding: 48px;
+  border-radius: 16px;
+  overflow-y: auto;
 }
 
 .tab-content {
