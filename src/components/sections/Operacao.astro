@@ -1,0 +1,69 @@
+---
+import SectionHead from "@components/ui/SectionHead.astro";
+import { operacao } from "@data/proposta";
+---
+
+<section class="ops">
+  <SectionHead
+    num="02"
+    titulo="Ordem de ativacao, primeiros 90 dias"
+    deck="A sequencia importa: cada etapa depende da anterior em producao."
+  />
+
+  <div class="list">
+    {operacao.map((o) => (
+      <div class="op">
+        <div class="n mono">{o.ordem}</div>
+        <div class="body">
+          <strong>{o.titulo}</strong>
+          <span>{o.descricao}</span>
+          {o.dependeDe && (
+            <span class="dep mono">└ depende de {o.dependeDe}</span>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .ops {
+    margin-bottom: var(--section);
+  }
+  .op {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .op:first-child {
+    padding-top: 0;
+  }
+  .op:last-child {
+    border-bottom: none;
+  }
+  .n {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--rule);
+  }
+  .body strong {
+    display: block;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .body > span {
+    display: block;
+    color: var(--ink-2);
+    font-size: var(--fs-small);
+    line-height: 1.55;
+    max-width: 560px;
+  }
+  .dep {
+    font-size: var(--fs-micro);
+    color: var(--ink-faint);
+    margin-top: 6px;
+  }
+</style>

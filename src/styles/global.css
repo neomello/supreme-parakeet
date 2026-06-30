@@ -1,0 +1,73 @@
+/* =====================================================
+   GLOBAL
+   Reset minimo + base do documento. Estilos de secao
+   ficam co-locados em cada componente .astro.
+   ===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  /* textura de scanline discreta, tipo CRT desligado */
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 3px,
+    rgba(0, 0, 0, 0.012) 3px,
+    rgba(0, 0, 0, 0.012) 4px
+  );
+}
+
+.shell {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+}
+
+/* utilitarios tipograficos */
+.mono {
+  font-family: var(--mono);
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* rule horizontal de secao */
+.rule {
+  height: 1px;
+  background: var(--rule);
+  border: none;
+}
+
+/* foco visivel para acessibilidade */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

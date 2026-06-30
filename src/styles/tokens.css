@@ -1,0 +1,49 @@
+/* =====================================================
+   TOKENS
+   Aesthetic: terminal de inicio dos anos 90. Cinza,
+   monoespacado, documento tecnico. Nao cyberpunk:
+   sem neon, sem glow. Hairlines, tipografia de sistema,
+   um unico acento sobrio.
+   ===================================================== */
+
+:root {
+  /* superficie: papel tecnico, nao preto-demo */
+  --paper:        #E8E6E1;
+  --paper-2:      #DEDCD6;
+  --ink:          #1A1916;
+  --ink-2:        #4A4842;
+  --ink-faint:    #807D74;
+  --rule:         #C4C1B8;
+  --rule-soft:    #D2CFC6;
+
+  /* acento unico, sobrio: verde fosforo dessaturado */
+  --signal:       #2F6B4F;
+  --signal-soft:  #E1E8E1;
+  --warn:         #8A5A1E;
+  --warn-soft:    #EDE4D4;
+
+  /* tipografia */
+  --mono: "IBM Plex Mono", "SFMono-Regular", Menlo,
+          Consolas, monospace;
+  --sans: "IBM Plex Sans", -apple-system, "Segoe UI",
+          Roboto, sans-serif;
+
+  /* escala */
+  --fs-display: 34px;
+  --fs-h2:      19px;
+  --fs-body:    14px;
+  --fs-small:   12.5px;
+  --fs-micro:   10.5px;
+
+  /* ritmo */
+  --gap:        20px;
+  --section:    72px;
+  --maxw:       980px;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --fs-display: 26px;
+    --section: 52px;
+  }
+}

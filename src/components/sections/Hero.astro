@@ -1,0 +1,90 @@
+---
+import { autor, cliente, tese } from "@data/proposta";
+
+// Quebra a tese em torno da palavra de destaque para
+// aplicar enfase sem markup hardcoded no conteudo.
+const [antes, depois] = tese.titulo.split(tese.destaque);
+---
+
+<header class="hero">
+  <div class="lead">
+    <p class="eyebrow">▸ {tese.eyebrow}</p>
+    <h1>
+      {antes}<em>{tese.destaque}</em>{depois}
+    </h1>
+    <p class="lede">{tese.lede}</p>
+  </div>
+
+  <aside class="card mono">
+    <div class="line"><b>{autor.nome}</b></div>
+    <div class="line">{autor.papel}</div>
+    <div class="sep"></div>
+    <div class="line">cliente: {cliente.nome}</div>
+    <div class="line">{cliente.dominio}</div>
+    <div class="line">{autor.horizonte}</div>
+  </aside>
+</header>
+
+<style>
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: var(--section);
+  }
+  .lead {
+    max-width: 620px;
+  }
+  .eyebrow {
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: var(--fs-display);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--signal);
+    /* sublinha de terminal sob a palavra-chave */
+    box-shadow: inset 0 -2px 0 var(--signal);
+  }
+  .lede {
+    margin-top: 16px;
+    color: var(--ink-2);
+    font-size: var(--fs-body);
+    max-width: 480px;
+  }
+  .card {
+    flex-shrink: 0;
+    font-size: var(--fs-micro);
+    color: var(--ink-faint);
+    border: 1px solid var(--rule);
+    padding: 16px 18px;
+    background: var(--paper-2);
+    min-width: 220px;
+  }
+  .card b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .line {
+    line-height: 1.9;
+  }
+  .sep {
+    height: 1px;
+    background: var(--rule);
+    margin: 8px 0;
+  }
+  @media (max-width: 720px) {
+    .hero {
+      flex-direction: column;
+      gap: 24px;
+    }
+    .card {
+      align-self: stretch;
+    }
+  }
+</style>

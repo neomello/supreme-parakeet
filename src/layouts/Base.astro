@@ -1,0 +1,38 @@
+---
+// Layout base. Carrega tokens, fontes e estilos globais.
+// Recebe titulo da pagina via props.
+interface Props {
+  titulo: string;
+}
+const { titulo } = Astro.props;
+import "@styles/tokens.css";
+import "@styles/global.css";
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{titulo}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js");
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <main class="shell">
+      <slot />
+    </main>
+  </body>
+</html>

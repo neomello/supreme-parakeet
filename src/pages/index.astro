@@ -1,0 +1,19 @@
+---
+import Base from "@layouts/Base.astro";
+import Hero from "@components/sections/Hero.astro";
+import SignalLayer from "@components/sections/SignalLayer.astro";
+import Diagnostico from "@components/sections/Diagnostico.astro";
+import Operacao from "@components/sections/Operacao.astro";
+import Roadmap from "@components/sections/Roadmap.astro";
+import Cta from "@components/sections/Cta.astro";
+import { cliente } from "@data/proposta";
+---
+
+<Base titulo={`${cliente.nome} — Continuidade de Dados`}>
+  <Hero />
+  <SignalLayer />
+  <Diagnostico />
+  <Operacao />
+  <Roadmap />
+  <Cta />
+</Base>

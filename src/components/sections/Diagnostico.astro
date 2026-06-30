@@ -1,0 +1,82 @@
+---
+import SectionHead from "@components/ui/SectionHead.astro";
+import StatusDot from "@components/ui/StatusDot.astro";
+import { diagnostico, diagnosticoNota } from "@data/proposta";
+---
+
+<section class="diag">
+  <SectionHead
+    num="01"
+    titulo="O que a infraestrutura publica revela hoje"
+    deck="Leitura tecnica externa, sem acesso a painel ou credenciais."
+  />
+
+  <div class="list">
+    {diagnostico.map((d) => (
+      <div class="row">
+        <StatusDot status={d.status} />
+        <span class="title">{d.titulo}</span>
+        <span class="desc">{d.descricao}</span>
+        <span class={`stat mono ${d.status}`}>{d.statusLabel}</span>
+      </div>
+    ))}
+  </div>
+
+  <p class="note mono">// {diagnosticoNota}</p>
+</section>
+
+<style>
+  .diag {
+    margin-bottom: var(--section);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 10px 190px 1fr 90px;
+    gap: 18px;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .row:last-child {
+    border-bottom: none;
+  }
+  .title {
+    font-weight: 600;
+    font-size: var(--fs-small);
+  }
+  .desc {
+    color: var(--ink-2);
+    font-size: var(--fs-small);
+    line-height: 1.5;
+  }
+  .stat {
+    font-size: var(--fs-micro);
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .stat.ok {
+    color: var(--signal);
+  }
+  .stat.watch {
+    color: var(--warn);
+  }
+  .note {
+    font-size: var(--fs-micro);
+    color: var(--ink-faint);
+    margin-top: 16px;
+  }
+  @media (max-width: 720px) {
+    .row {
+      grid-template-columns: 10px 1fr;
+      row-gap: 6px;
+    }
+    .desc,
+    .stat {
+      grid-column: 2;
+    }
+    .stat {
+      text-align: left;
+    }
+  }
+</style>

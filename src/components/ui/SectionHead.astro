@@ -1,0 +1,61 @@
+---
+// Cabecalho de secao numerado. O numero codifica ordem
+// real de leitura, nao decoracao.
+interface Props {
+  num: string;
+  titulo: string;
+  deck?: string;
+}
+const { num, titulo, deck } = Astro.props;
+---
+
+<div class="shead">
+  <div class="left">
+    <span class="num mono">{num}</span>
+    <h2>{titulo}</h2>
+  </div>
+  {deck && <p class="deck">{deck}</p>}
+</div>
+
+<style>
+  .shead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .left {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .num {
+    font-size: var(--fs-small);
+    color: var(--signal);
+    border: 1px solid var(--rule);
+    padding: 2px 8px;
+  }
+  h2 {
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .deck {
+    color: var(--ink-2);
+    font-size: var(--fs-small);
+    max-width: 300px;
+    text-align: right;
+    line-height: 1.45;
+  }
+  @media (max-width: 720px) {
+    .shead {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .deck {
+      text-align: left;
+    }
+  }
+</style>

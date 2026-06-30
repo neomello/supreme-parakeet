@@ -1,0 +1,25 @@
+---
+// Indicador de status. Quadrado, nao circulo: estetica
+// de terminal / caractere de bloco.
+import type { Status } from "@data/proposta";
+interface Props {
+  status: Status;
+}
+const { status } = Astro.props;
+---
+
+<span class={`sq ${status}`} aria-hidden="true"></span>
+
+<style>
+  .sq {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+  }
+  .ok {
+    background: var(--signal);
+  }
+  .watch {
+    background: var(--warn);
+  }
+</style>

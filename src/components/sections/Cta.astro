@@ -1,0 +1,56 @@
+---
+import { cta, autor } from "@data/proposta";
+---
+
+<footer class="cta">
+  <hr class="rule" />
+  <div class="row">
+    <div class="left">
+      <strong>{cta.titulo}</strong>
+      <span>{cta.descricao}</span>
+    </div>
+    <div class="right mono">
+      proposta preparada por {autor.nome}<br />
+      {autor.horizonte}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .cta {
+    margin-top: 8px;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding-top: 26px;
+  }
+  .left strong {
+    display: block;
+    font-size: var(--fs-body);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .left span {
+    font-size: var(--fs-small);
+    color: var(--ink-2);
+  }
+  .right {
+    font-size: var(--fs-micro);
+    color: var(--ink-faint);
+    text-align: right;
+    line-height: 1.7;
+  }
+  @media (max-width: 720px) {
+    .row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .right {
+      text-align: left;
+    }
+  }
+</style>
